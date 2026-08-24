@@ -1,0 +1,29 @@
+﻿@model AzureCalculator.Models.CalculatorModel
+
+<h1>Azure Calculator</h1>
+
+<form asp-controller="Calculator" asp-action="Index" method="post">
+
+	<label>First Number</label>
+	<input type="number" step="any" asp-for="Number1" />
+	<br />
+
+	<label>Operator</label>
+	<select asp-for="Operation">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="/">/</option>
+		<option value="*">*</option>
+	</select>
+	<br />
+
+	
+	<label>Second Number</label>
+	<input type="number" step="any" asp-for="Number2" />
+
+	<button type="submit">Calculate</button>
+
+	<h2>Result: @Model.Result</h2>
+
+
+</form>
