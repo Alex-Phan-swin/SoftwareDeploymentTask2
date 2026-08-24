@@ -5,9 +5,21 @@ namespace AzureCalculator.Controllers
 {
     public class CalculatorController : Controller
     {
+
+        private readonly IConfiguration _configuration;
+
+        public CalculatorController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.CalculatorName =
+                _configuration["CALCULATOR_NAME"] ?? "Calculator";
+
             return View(new CalculatorModel());
         }
 
@@ -44,6 +56,9 @@ namespace AzureCalculator.Controllers
                     break;
                         
             }
+
+            ViewBag.CalculatorName =
+                _configuration["CALCULATOR_NAME"] ?? "Calculator";
 
             return View(model);
         }

@@ -30,6 +30,11 @@ namespace AzureCalculator
                 name: "default",
                 pattern: "{controller=Calculator}/{action=Index}/{id?}");
 
+            app.MapGet("/health", () => 
+            { 
+                return Results.Ok(new { status = "Healthy", application = "Azure Calculator", timestamp = DateTime.UtcNow }); 
+            });
+
             app.Run();
         }
     }
